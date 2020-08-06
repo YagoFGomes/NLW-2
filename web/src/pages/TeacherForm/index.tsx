@@ -1,7 +1,13 @@
 import React from 'react';
 import PageHeader from '../../components/PageHeader';
+import Input from '../../components/Input';
+import Textarea from '../../components/Textarea';
+import Select from '../../components/Select';
+
+import warningIcon from '../../assets/images/icons/warning.svg'
 
 import './styles.css';
+
 
 function TeacherForm(){
     return(
@@ -11,24 +17,74 @@ function TeacherForm(){
 
             <main>
                 <fieldset>
-                    <legend>Seus dados1</legend>
+                    <legend>Seus dados</legend>
 
-                    <div className="input-block">
-                        <label htmlFor="name">Nome completo</label>
-                        <input type="text" id="name"/>
-                    </div>
-                      
-                    <div className="input-block">
-                        <label htmlFor="avatar">Avatar</label>
-                        <input type="text" id="avatar"/>
-                    </div>
-                      
-                    <div className="input-block">
-                        <label htmlFor="whatsapp">WhatsApp</label>
-                        <input type="text" id="whatsapp"/>
-                    </div>
+                    <Input name="name" label="Nome completo" />
+                    <Input name="avatar" label="Avatar" />
+                    <Input name="whatsapp" label="WhatsApp" />
+                    <Textarea name="bio" label="Biografia"/>
 
                 </fieldset>
+                <fieldset>
+                    <legend>Sobre a aula</legend>
+
+                    <Select
+                     name="subject" 
+                     label="Matéria"
+                     options={[
+                         {value:'Artes', label: 'Artes'},
+                         {value:'Biologia', label: 'Biologia'},
+                         {value:'Ciências', label: 'Ciências'},
+                         {value:'Educação física', label: 'Educação física'},
+                         {value:'Física', label: 'Física'},
+                         {value:'Geografia', label: 'Geografia'},
+                         {value:'História', label: 'História'},
+                         {value:'Matemática', label: 'Matemática'},
+                         {value:'Português', label: 'Português'},
+                         {value:'Química', label: 'Química'},
+                     ]}
+                     />
+                    <Input name="cost" label="Custo da sua hota por aula" />
+
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Horários Disponíveis <button type="button">+ Novo Horário</button> </legend>
+                
+
+                    <div className="schadule-item">
+                        <Select
+                            name="subject" 
+                            label="Matéria"
+                            options={[
+                                {value:'Artes', label: 'Artes'},
+                                {value:'Biologia', label: 'Biologia'},
+                                {value:'Ciências', label: 'Ciências'},
+                                {value:'Educação física', label: 'Educação física'},
+                                {value:'Física', label: 'Física'},
+                                {value:'Geografia', label: 'Geografia'},
+                                {value:'História', label: 'História'},
+                                {value:'Matemática', label: 'Matemática'},
+                                {value:'Português', label: 'Português'},
+                                {value:'Química', label: 'Química'},
+                            ]}
+                            />
+                            <Input name="from" label="Das" type="time"/>
+                            <Input name="to" label="Até" type="time"/>
+
+                        </div>
+                    </fieldset>
+                    
+                <footer>
+                    <p>
+                        <img src={warningIcon} alt="Aviso importante"/>
+                        Importante! <br/>
+                        Preencha todos os dados.
+                    </p>
+                    <button type="button">
+                        Salvar cadastro
+                    </button>
+                </footer>
             </main>
 
         </div>
